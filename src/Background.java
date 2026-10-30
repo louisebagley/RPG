@@ -1,0 +1,73 @@
+public class Background {
+
+    private String background;
+    private int x,y,dy,dx;
+
+    private int panelWidth;
+
+    public Background(int panelWidth) {
+        background = "bg.png";
+        x=0;
+        y=0;
+        dy=0;
+        dx=-1;
+        this.panelWidth=panelWidth;
+    }
+
+    public String getBackground() {
+        return background;
+    }
+
+    public void setBackground(String background) {
+        this.background = background;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    public int getDy() {
+        return dy;
+    }
+
+    public void setDy(int dy) {
+        this.dy = dy;
+    }
+
+    public int getDx() {
+        return dx;
+    }
+
+    public void setDx(int dx) {
+        this.dx = dx;
+    }
+
+    public int getPanelWidth() {
+        return panelWidth;
+    }
+
+    public void setPanelWidth(int panelWidth) {
+        this.panelWidth = panelWidth;
+    }
+
+    public void move(){
+        x+=dx;
+        if(x<= -panelWidth) {
+            x=0;
+        }
+    }
+
+
+}
