@@ -330,7 +330,6 @@ private void fireEnemyWeapons() {
 
     long currentTime = System.currentTimeMillis();
 
-    // Enemy fires every 1.5 seconds.
     if (currentTime - lastEnemyShot >= 1500) {
 
         Weapons enemyWeapon = enemy.getWeapon();
@@ -345,7 +344,6 @@ private void fireEnemyWeapons() {
             enemyWeapon.getH()
         );
 
-        // Shoot toward the player's side of the screen.
         projectile.setDx(-6);
 
         enemyAttacks.add(projectile);
@@ -498,7 +496,32 @@ if ((level.equals("explore") || level.equals("game"))
     if (key == KeyEvent.VK_D) {
         mainChar.setX(mainChar.getX() + moveSpeed);
     }
+
+     if (key == KeyEvent.VK_T) {
+          level = "start";
+    initializeBackground();
+    lastEnemyShot = 0;
+    requestFocusInWindow();
+   mainChar = displayChars.get(0);
+   rangeAttack = new ArrayList<Weapons>();
+		ogbg = new ImageIcon("ogbg.png");
+		this.addKeyListener(this);
+		this.addMouseListener(this);
+		this.addMouseMotionListener(this);
+        this.setFocusable(true);
+this.requestFocusInWindow();
+		new Thread(this).start();
+		enemies = setEs();
+		rangeAttack = new ArrayList<Weapons>();
+enemyAttacks = new ArrayList<Weapons>();
+		
+		
+		displayChars = setupChars();
+		for(Characters c: displayChars) {
+			System.out.println(c.toString());
+    }
 }
+        }
 }
 
 	  @Override
