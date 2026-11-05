@@ -443,8 +443,7 @@ public void keyPressed(KeyEvent e) {
     mainChar.setX(500);
     mainChar.setY(300);
 
-//testing
-  
+ 
     level = "explore";
 
     requestFocusInWindow();
