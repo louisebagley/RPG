@@ -16,6 +16,10 @@ public class Game extends JPanel  implements Runnable, KeyListener, MouseListene
 	private String level;
 	private Characters mainChar;
     private int key;
+    private boolean W = false;
+    private boolean A = false;
+    private boolean S = false;
+    private boolean D = false;
     private Background bg;
 private ImageIcon background;
 
@@ -127,6 +131,7 @@ temp.add(new Grinch(1500, 500));
 	   		while(true)
 	   		{
 	   		   Thread.currentThread().sleep(5);
+               moveSanta();
 	            repaint();
 	         }
 	      }catch(Exception e)
@@ -416,12 +421,52 @@ public void mouseClicked(MouseEvent e) {
 		//throw new UnsupportedOperationException("Unimplemented method 'keyTyped'");
 	  }
 
+      private void santaMovement(){
+        
+        if (mainChar instanceof Santa) {
+            boolean moving = (W || A || S || D);
+
+           if(level.equals("explore") || level.equals("game")){
+            ((Santa) mainChar).setWalking(moving);
+           } else{
+            ((Santa) mainChar).setWalking(false);
+           }
+        }
+      }
+
+      private void moveSanta() {
+    if (mainChar == null) return;
+
+    if (level.equals("explore") || level.equals("game")) {
+        int moveSpeed = 2;
+
+        if (W) mainChar.setY(mainChar.getY() - moveSpeed);
+        if (S) mainChar.setY(mainChar.getY() + moveSpeed);
+        if (A) mainChar.setX(mainChar.getX() - moveSpeed);
+        if (D) mainChar.setX(mainChar.getX() + moveSpeed);
+
+        santaMovement();
+    }
+}
+
 	@Override
 public void keyPressed(KeyEvent e) {
 
     key = e.getKeyCode();
+System.out.println(key);
+    if(key== KeyEvent.VK_W)
+        W = true;
+   if (key== KeyEvent.VK_A) 
+        A = true;
+    if(key== KeyEvent.VK_S)
+        S = true;
+    if(key== KeyEvent.VK_D)
+        D = true;
 
-    System.out.println(key);
+    
+    
+
+    
 
     if (level.equals("start")) {
 
@@ -480,22 +525,8 @@ if ((level.equals("explore") || level.equals("game"))
 
     int moveSpeed = 10;
 
-    if (key == KeyEvent.VK_W) {
-        mainChar.setY(mainChar.getY() - moveSpeed);
-    }
-
-    if (key == KeyEvent.VK_S) {
-        mainChar.setY(mainChar.getY() + moveSpeed);
-    }
-
-    if (key == KeyEvent.VK_A) {
-        mainChar.setX(mainChar.getX() - moveSpeed);
-    }
-
-    if (key == KeyEvent.VK_D) {
-        mainChar.setX(mainChar.getX() + moveSpeed);
-    }
-
+  
+santaMovement();
      if (key == KeyEvent.VK_T) {
           level = "start";
     initializeBackground();
@@ -527,5 +558,17 @@ enemyAttacks = new ArrayList<Weapons>();
 	  public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
 		//throw new UnsupportedOperationException("Unimplemented method 'keyReleased'");
+
+        int releasedKey = e.getKeyCode();
+        if (releasedKey == KeyEvent.VK_W)
+            W = false;
+   if (releasedKey == KeyEvent.VK_A)
+            A = false;
+    if (releasedKey == KeyEvent.VK_S)
+            S = false;
+ if (releasedKey == KeyEvent.VK_D)
+            D = false;
+        
+ santaMovement();
 	  }
 }
