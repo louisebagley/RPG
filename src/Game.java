@@ -421,19 +421,22 @@ public void mouseClicked(MouseEvent e) {
 		//throw new UnsupportedOperationException("Unimplemented method 'keyTyped'");
 	  }
 
-      private void santaMovement(){
-        
-        if (mainChar instanceof Santa) {
-            boolean moving = (W || A || S || D);
+      private void santaMovement() {
 
-           if(level.equals("explore") || level.equals("game")){
-            ((Santa) mainChar).setWalking(moving);
-           } else{
-            ((Santa) mainChar).setWalking(false);
-           }
-        }
-      }
+    boolean moving = (W || A || S || D);
 
+    if (mainChar instanceof Santa) {
+        ((Santa) mainChar).setWalking(
+            moving && (level.equals("explore") || level.equals("game"))
+        );
+    }
+
+    if (mainChar instanceof MrsClaus) {
+        ((MrsClaus) mainChar).setWalking(
+            moving && (level.equals("explore") || level.equals("game"))
+        );
+    }
+}
       private void moveSanta() {
     if (mainChar == null) return;
 
