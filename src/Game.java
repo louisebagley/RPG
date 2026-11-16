@@ -436,6 +436,18 @@ public void mouseClicked(MouseEvent e) {
             moving && (level.equals("explore") || level.equals("game"))
         );
     }
+
+    if (mainChar instanceof Kid) {
+        ((Kid) mainChar).setWalking(
+            moving && (level.equals("explore") || level.equals("game"))
+        );
+    }
+
+    if (mainChar instanceof Elf) {
+        ((Elf) mainChar).setWalking(
+            moving && (level.equals("explore") || level.equals("game"))
+        );
+    }
 }
       private void moveSanta() {
     if (mainChar == null) return;

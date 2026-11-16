@@ -36,7 +36,7 @@ public class Characters {
         this.weapon = weapon;
           x=0;
         y=200;
-        w=200;
+        w=400;
         h=200;
     }
     public Characters(int x, int y,ImageIcon pic, int range, int attack, int health, int defense, int speed, Weapons weapon) {
