@@ -460,6 +460,21 @@ public void mouseClicked(MouseEvent e) {
         if (A) mainChar.setX(mainChar.getX() - moveSpeed);
         if (D) mainChar.setX(mainChar.getX() + moveSpeed);
 
+        if (level.equals("explore")) {
+            int mapWidth = ogbg.getIconWidth();
+            int mapHeight = ogbg.getIconHeight();
+        
+
+        if (mainChar.getX() < 0) mainChar.setX(0);
+        if (mainChar.getY() < 0) mainChar.setY(0);
+
+           if (mainChar.getX() + mainChar.getW() > mapWidth)
+                mainChar.setX(mapWidth - mainChar.getW());
+
+            if (mainChar.getY() + mainChar.getH() > mapHeight)
+                mainChar.setY(mapHeight - mainChar.getH());
+        }
+
         santaMovement();
     }
 }
