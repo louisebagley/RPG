@@ -124,21 +124,21 @@ temp.add(new Grinch(1500, 500));
     }
 }
 	
-	  public void run()
-	   {
-	   	try
-	   	{
-	   		while(true)
-	   		{
-	   		   Thread.currentThread().sleep(5);
-               moveSanta();
-	            repaint();
-	         }
-	      }catch(Exception e)
-	      {
-	      }
-	  	}
-	
+
+public void run() {
+    try {
+        while (true) {
+            Thread.sleep(16);
+
+            moveSanta();
+
+            repaint();
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+}
+
 	  
 	  public  void paint(Graphics g){
 	  
